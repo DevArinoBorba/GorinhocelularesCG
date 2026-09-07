@@ -283,14 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const produtoInteresse = inputProdutoInteresse ? inputProdutoInteresse.value.trim() : '';
 
       const message = `Olá equipe da Gordinho Celulares! 👋\n\n` +
-        `Preenchi a simulação no site e gostaria de consultar o parcelamento no *Boleto Bancário*:\n\n` +
+        `Fiz meu pré-cadastro no site e gostaria de agendar minha análise presencial para o parcelamento no *Boleto Bancário*:\n\n` +
         `👤 *Nome:* ${nome}\n` +
         `📱 *WhatsApp:* ${whatsapp}\n` +
         `💰 *Faixa de Valor:* ${faixaValor}\n` +
         `🧾 *Pretende comprar no boleto?* ${boleto}\n` +
         (cpf ? `🆔 *CPF:* ${cpf}\n` : '') +
         (produtoInteresse ? `📲 *Produto de Interesse:* ${produtoInteresse}\n` : '') +
-        `\nGostaria de ver as opções de parcelas e saber o que é preciso para aprovar meu pedido.`;
+        `\nGostaria de agendar um horário para ir até a loja e concluir minha análise presencial.`;
 
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`;
