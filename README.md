@@ -1,6 +1,6 @@
 # Gordinho Celulares - Landing Page de Alta Conversão
 
-Landing Page ultra moderna, dinâmica, mobile-first e de alta conversão (CRO), voltada para campanhas de tráfego pago (Meta Ads e Google Ads) promovendo a venda de **Celulares Androids** parcelados no **Boleto Bancário** em até 24x sem depender de limite no cartão de crédito.
+Landing Page ultra moderna, dinâmica, mobile-first e de alta conversão (CRO), voltada para campanhas de tráfego pago (Meta Ads e Google Ads) promovendo a venda de **Celulares Androids** parcelados no **Boleto Bancário** em até 18x sem depender de limite no cartão de crédito.
 
 ## 🚀 Tecnologias Utilizadas
 - **HTML5 Semântico:** Estrutura acessível, otimizada para SEO e Open Graph para compartilhamento social.
