@@ -302,17 +302,20 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = whatsappUrl;
       };
 
-      fetch(GOOGLE_SHEETS_URL, {
+      const formData = new URLSearchParams({
+        nome,
+        whatsapp,
+        faixa_valor: faixaValor,
+        compra_boleto: boleto,
+        cpf,
+      });
+
+      // Os dados vão na query string (e não no body) porque o endpoint /exec do
+      // Apps Script redireciona (302) antes de executar o script, e esse
+      // redirecionamento derruba o body do POST — a query string sobrevive.
+      fetch(`${GOOGLE_SHEETS_URL}?${formData.toString()}`, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          nome,
-          whatsapp,
-          faixa_valor: faixaValor,
-          compra_boleto: boleto,
-          cpf,
-        }),
       })
         .catch((err) => console.warn('Erro ao enviar dados para o Google Sheets:', err))
         .finally(redirectToWhatsapp);
