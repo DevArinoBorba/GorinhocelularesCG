@@ -1,0 +1,12 @@
+# Robots.txt para Gordinho Celulares
+# Permite a indexação completa pelos motores de busca (Googlebot, Bingbot, etc.)
+
+User-agent: *
+Allow: /
+
+# Desautoriza parâmetros ou buscas internas temporárias caso venham a existir
+Disallow: /scratch/
+Disallow: /*?*preview=
+
+# Localização do Sitemap XML
+Sitemap: https://www.gordinhocelularesoficial.com.br/sitemap.xml

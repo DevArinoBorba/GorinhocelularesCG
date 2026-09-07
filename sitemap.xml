@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.gordinhocelularesoficial.com.br/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Imagem de Destaque / Identidade da Marca -->
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/Gordinho+influencer.webp</image:loc>
+      <image:title>Gordinho Celulares Campo Grande - Loja Física há mais de 15 anos</image:title>
+      <image:caption>Fachada e atendimento da loja física Gordinho Celulares na Avenida Noroeste em Campo Grande - MS</image:caption>
+    </image:image>
+
+    <!-- Logo / Mascote -->
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/Logo_cropped.webp</image:loc>
+      <image:title>Gordinho Celulares - Mascote Oficial e Logotipo</image:title>
+      <image:caption>Logomarca oficial da Gordinho Celulares</image:caption>
+    </image:image>
+
+    <!-- Celulares em Destaque -->
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/RedmiNote15.webp</image:loc>
+      <image:title>Xiaomi Redmi Note 15 no Boleto Bancário em Campo Grande</image:title>
+      <image:caption>Xiaomi Redmi Note 15 com câmera de 108MP parcelado em até 18x no boleto</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/PocoC81PRo.webp</image:loc>
+      <image:title>Xiaomi Poco C81 Pro no Boleto Bancário em Campo Grande</image:title>
+      <image:caption>Xiaomi Poco C81 Pro parcelado no boleto sem consulta tradicional ou limite de cartão</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/RealmeC85.webp</image:loc>
+      <image:title>Realme C85 Ultra no Boleto Bancário</image:title>
+      <image:caption>Realme C85 Ultra com bateria de 7.000mAh no carnê em Campo Grande - MS</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/RealmePower.webp</image:loc>
+      <image:title>Realme P4 Power 5G no Boleto Bancário</image:title>
+      <image:caption>Realme P4 Power 5G com bateria de 10.000mAh parcelado em até 18x no boleto</image:caption>
+    </image:image>
+  </url>
+</urlset>
