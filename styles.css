@@ -2068,10 +2068,23 @@ button, input, select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.82rem;
   color: #64748b;
+}
+
+.footer-bottom-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-copyright {
+  font-size: 0.72rem;
 }
 
 .legal-links {
@@ -2088,23 +2101,15 @@ button, input, select {
   opacity: 0.4;
 }
 
-.footer-credit {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .footer-credit-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 8px 16px;
+  gap: 8px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: #94a3b8;
   transition: all var(--transition-fast);
 }
@@ -2121,8 +2126,8 @@ button, input, select {
 }
 
 .orium-logo {
-  height: 18px;
-  width: 18px;
+  height: 15px;
+  width: 15px;
   filter: brightness(0) invert(1);
 }
 
@@ -2422,8 +2427,13 @@ button, input, select {
 
   .footer-bottom {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     text-align: center;
+  }
+
+  .footer-bottom-left {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
