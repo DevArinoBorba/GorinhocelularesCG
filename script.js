@@ -13,6 +13,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Constantes da Loja
   const STORE_WHATSAPP_NUMBER = '5567992451418'; // (67) 99245-1418
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyXFuEbKpKCLGWKCsW2Gg369w7UwKl3PQDomJIwjtYDnv2YeKiVp9p-rJ65vS676i7x/exec';
 
   // Elementos do DOM
   const navbar = document.getElementById('navbar');
@@ -294,7 +295,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
-      window.open(whatsappUrl, '_blank');
+      let redirected = false;
+      const redirectToWhatsapp = () => {
+        if (redirected) return;
+        redirected = true;
+        window.location.href = whatsappUrl;
+      };
+
+      fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          nome,
+          whatsapp,
+          faixa_valor: faixaValor,
+          compra_boleto: boleto,
+          cpf,
+        }),
+      })
+        .catch((err) => console.warn('Erro ao enviar dados para o Google Sheets:', err))
+        .finally(redirectToWhatsapp);
+
+      setTimeout(redirectToWhatsapp, 2000);
     });
   }
 
