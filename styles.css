@@ -2088,6 +2088,39 @@ button, input, select {
   opacity: 0.4;
 }
 
+.footer-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.footer-credit a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-credit a:hover {
+  opacity: 0.75;
+}
+
+.orium-logo {
+  height: 22px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="light"] .orium-logo {
+  filter: none;
+}
+
 /* --------------------------------------------------------------------------
    14. Botão Flutuante do WhatsApp & Tooltip
    -------------------------------------------------------------------------- */
