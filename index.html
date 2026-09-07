@@ -64,6 +64,7 @@
 </head>
 
 <body class="bg-dark text-light antialiased selection:bg-emerald-500 selection:text-black">
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VFSNDQG" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -142,7 +143,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- 3. Hero Section (Ultra Dinâmica e Tecnológica) -->
     <section class="hero-section" id="inicio">
       <div class="hero-glow hero-glow-emerald"></div>
@@ -750,8 +751,9 @@
               <!-- Reviews / Prova Social -->
               <div class="reviews-box">
                 <div class="stars-row">
-                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                    class="star">★</span><span class="star">★</span>
+                  <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span
+                    class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span
+                    class="star" aria-hidden="true">★</span>
                   <span class="rating-text">4.9 de 5 estrelas no Google</span>
                 </div>
                 <p class="review-quote">
@@ -777,7 +779,7 @@
 
         <div class="faq-list max-w-2xl mx-auto">
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
               <span>A análise é feita online ou preciso ir até a loja?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -785,7 +787,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
               <p>Todo o processo de aprovação de crédito é feito de forma presencial, aqui na nossa loja física em Campo
                 Grande – MS. Você faz seu pré-cadastro gratuito pelo site ou WhatsApp, agenda um horário e, ao ser
                 aprovado na loja, já sai com o seu aparelho novo na hora!</p>
@@ -793,7 +795,7 @@
           </div>
 
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
               <span>Quem está negativado ou com score baixo consegue aprovação?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -801,7 +803,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
               <p>Sim! Nossa instituição financeira parceira é especializada em aparelhos Android e possui critérios
                 flexíveis que avaliam outras variáveis além do score. Mesmo com restrição no SPC ou Serasa, vale a pena
                 fazer seu pré-cadastro gratuito e vir até a loja consultar a sua liberação.</p>
@@ -809,7 +811,7 @@
           </div>
 
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
               <span>Precisa dar valor de entrada?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -817,7 +819,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
               <p>A necessidade ou valor da entrada depende da análise individual do seu perfil cadastral, feita
                 presencialmente na loja. Em diversos casos a entrada é mínima ou bastante acessível. Fazendo seu
                 pré-cadastro, nossa equipe já te chama para agendar e informar as opções disponíveis para o seu CPF.</p>
@@ -825,7 +827,7 @@
           </div>
 
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
               <span>Quais documentos preciso apresentar?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -833,7 +835,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
               <p>O processo é ultra simples: basta apresentar, na loja, um documento oficial com foto (RG ou CNH
                 atualizada) e dados básicos para consulta de crédito. Não é necessário levar holerite ou pilhas de
                 papelada.</p>
@@ -841,7 +843,7 @@
           </div>
 
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
               <span>Os celulares são novos, originais e com garantia?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -849,7 +851,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
               <p>Sim, com certeza! Na Gordinho Celulares trabalhamos exclusivamente com aparelhos 100% originais de
                 fábrica, lacrados na caixa com todos os acessórios e com garantia total da loja e do fabricante. Você
                 abre a caixa e testa tudo na hora.</p>
@@ -857,7 +859,7 @@
           </div>
 
           <div class="faq-item glass-card reveal-on-scroll">
-            <button class="faq-question" aria-expanded="false">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
               <span>Onde fica localizada a loja física?</span>
               <span class="faq-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -865,7 +867,7 @@
                 </svg>
               </span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
               <p>Nossa loja física fica estrategicamente localizada no Centro de Campo Grande – MS, na <strong>Avenida
                   Noroeste, 5338 (Centro)</strong>. Contamos com equipe pronta para lhe receber de braços abertos!</p>
             </div>
@@ -1126,7 +1128,7 @@
   <!-- 11. Botão Flutuante do WhatsApp com Tooltip Dinâmico -->
   <aside class="floating-whatsapp-container" aria-label="Atendimento via WhatsApp">
     <div class="whatsapp-tooltip" id="wa-tooltip">
-      <span class="tooltip-close" id="close-tooltip">&times;</span>
+      <button type="button" class="tooltip-close" id="close-tooltip" aria-label="Fechar aviso">&times;</button>
       <div class="tooltip-content">
         <strong>Dúvidas sobre o Boleto?</strong>
         <span>Preencha o formulário e faça seu pré-cadastro!</span>

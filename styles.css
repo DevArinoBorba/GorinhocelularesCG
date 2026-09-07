@@ -328,14 +328,16 @@ button, input, select {
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: var(--text-primary);
   padding: 7px 12px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  outline: none;
   font-size: 0.8rem;
   font-weight: 700;
   transition: all var(--transition-fast);
@@ -442,6 +444,11 @@ button, input, select {
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--emerald-500);
+  outline-offset: 3px;
 }
 
 .btn-cta {
@@ -1601,6 +1608,11 @@ button, input, select {
   transition: color var(--transition-fast);
 }
 
+.faq-question:focus-visible {
+  outline: 2px solid var(--emerald-500);
+  outline-offset: -2px;
+}
+
 .faq-question:hover {
   color: #059669;
 }
@@ -2060,7 +2072,7 @@ button, input, select {
   border: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.78rem;
   line-height: 1.6;
-  color: #64748b;
+  color: #94a3b8;
   margin-bottom: 30px;
 }
 
@@ -2073,7 +2085,7 @@ button, input, select {
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.82rem;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .footer-bottom-left {
@@ -2170,8 +2182,15 @@ button, input, select {
 
 .tooltip-close {
   position: absolute;
-  top: 4px;
-  right: 8px;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
   font-size: 1.1rem;
   cursor: pointer;
   color: var(--text-muted);
@@ -2479,5 +2498,37 @@ button, input, select {
   }
   .fb-sub {
     font-size: 0.65rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Acessibilidade: Link de Atalho, Foco de Teclado e Movimento Reduzido
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 999;
+  background: var(--emerald-500);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
