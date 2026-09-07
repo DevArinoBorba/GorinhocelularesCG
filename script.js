@@ -282,8 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
         selectModelo.value = 'Realme C85';
       } else if (modelName.toLowerCase().includes('power') || modelName.toLowerCase().includes('p4')) {
         selectModelo.value = 'Realme P4 Power 5G';
-      } else if (modelName.toLowerCase().includes('realme')) {
-        selectModelo.value = 'Outro Realme';
+      } else if (modelName.toLowerCase().includes('realme') || modelName.toLowerCase().includes('android')) {
+        selectModelo.value = 'Outro Celular Android';
+      } else {
+        selectModelo.value = 'Outro Celular Android';
       }
     }
 
