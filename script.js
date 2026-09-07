@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-simulador');
   const inputNome = document.getElementById('lead-nome');
   const inputWhatsapp = document.getElementById('lead-whatsapp');
-  const selectModelo = document.getElementById('lead-modelo');
-  const selectStatusCpf = document.getElementById('lead-status-cpf');
+  const selectFaixaValor = document.getElementById('lead-faixa-valor');
+  const selectBoleto = document.getElementById('lead-boleto');
+  const inputCpf = document.getElementById('lead-cpf');
+  const checkboxConsent = document.getElementById('lead-consent');
+  const inputProdutoInteresse = document.getElementById('lead-produto-interesse');
   const mobileStickyCta = document.getElementById('mobile-sticky-cta');
   const tooltipClose = document.getElementById('close-tooltip');
   const waTooltip = document.getElementById('wa-tooltip');
@@ -142,6 +145,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
   };
 
+  const applyCpfMask = (value) => {
+    const digits = value.replace(/\D/g, '').substring(0, 11);
+
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `${digits.slice(0, 3)}.${digits.slice(3)}`;
+    if (digits.length <= 9) return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6)}`;
+    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9, 11)}`;
+  };
+
   if (inputWhatsapp) {
     inputWhatsapp.addEventListener('input', (e) => {
       e.target.value = applyPhoneMask(e.target.value);
@@ -176,11 +188,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (inputNome) {
     inputNome.addEventListener('input', () => clearError(inputNome.closest('.form-group')));
   }
-  if (selectModelo) {
-    selectModelo.addEventListener('change', () => clearError(selectModelo.closest('.form-group')));
+  if (selectFaixaValor) {
+    selectFaixaValor.addEventListener('change', () => clearError(selectFaixaValor.closest('.form-group')));
   }
-  if (selectStatusCpf) {
-    selectStatusCpf.addEventListener('change', () => clearError(selectStatusCpf.closest('.form-group')));
+  if (selectBoleto) {
+    selectBoleto.addEventListener('change', () => clearError(selectBoleto.closest('.form-group')));
+  }
+  if (inputCpf) {
+    inputCpf.addEventListener('input', (e) => {
+      e.target.value = applyCpfMask(e.target.value);
+      clearError(inputCpf.closest('.form-group'));
+    });
+  }
+  if (checkboxConsent) {
+    checkboxConsent.addEventListener('change', () => clearError(checkboxConsent.closest('.form-group')));
   }
 
   const validateForm = () => {
@@ -204,20 +225,37 @@ document.addEventListener('DOMContentLoaded', () => {
       clearError(inputWhatsapp.closest('.form-group'));
     }
 
-    // 3. Modelo
-    if (!selectModelo || !selectModelo.value) {
-      showError(selectModelo.closest('.form-group'), 'Selecione o modelo que você deseja simular.');
+    // 3. Faixa de Valor
+    if (!selectFaixaValor || !selectFaixaValor.value) {
+      showError(selectFaixaValor.closest('.form-group'), 'Selecione a faixa de valor desejada.');
       isValid = false;
     } else {
-      clearError(selectModelo.closest('.form-group'));
+      clearError(selectFaixaValor.closest('.form-group'));
     }
 
-    // 4. Status CPF
-    if (!selectStatusCpf || !selectStatusCpf.value) {
-      showError(selectStatusCpf.closest('.form-group'), 'Selecione a situação do seu CPF.');
+    // 4. Compra no Boleto
+    if (!selectBoleto || !selectBoleto.value) {
+      showError(selectBoleto.closest('.form-group'), 'Selecione uma opção.');
       isValid = false;
     } else {
-      clearError(selectStatusCpf.closest('.form-group'));
+      clearError(selectBoleto.closest('.form-group'));
+    }
+
+    // 5. CPF (opcional, mas se preenchido precisa ter 11 dígitos)
+    const digitsCpf = inputCpf ? inputCpf.value.replace(/\D/g, '') : '';
+    if (digitsCpf.length > 0 && digitsCpf.length < 11) {
+      showError(inputCpf.closest('.form-group'), 'Digite um CPF válido ou deixe em branco.');
+      isValid = false;
+    } else {
+      clearError(inputCpf.closest('.form-group'));
+    }
+
+    // 6. Consentimento
+    if (!checkboxConsent || !checkboxConsent.checked) {
+      showError(checkboxConsent.closest('.form-group'), 'É necessário autorizar o contato para continuar.');
+      isValid = false;
+    } else {
+      clearError(checkboxConsent.closest('.form-group'));
     }
 
     return isValid;
@@ -238,16 +276,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nome = inputNome.value.trim();
       const whatsapp = inputWhatsapp.value.trim();
-      const modelo = selectModelo.value;
-      const statusCpf = selectStatusCpf.value;
+      const faixaValor = selectFaixaValor.value;
+      const boleto = selectBoleto.value;
+      const cpf = inputCpf ? inputCpf.value.trim() : '';
+      const produtoInteresse = inputProdutoInteresse ? inputProdutoInteresse.value.trim() : '';
 
       const message = `Olá equipe da Gordinho Celulares! 👋\n\n` +
         `Preenchi a simulação no site e gostaria de consultar o parcelamento no *Boleto Bancário*:\n\n` +
         `👤 *Nome:* ${nome}\n` +
         `📱 *WhatsApp:* ${whatsapp}\n` +
-        `📲 *Modelo de Interesse:* ${modelo}\n` +
-        `📋 *Status do CPF:* ${statusCpf}\n\n` +
-        `Gostaria de ver as opções de parcelas e saber o que é preciso para aprovar meu pedido.`;
+        `💰 *Faixa de Valor:* ${faixaValor}\n` +
+        `🧾 *Pretende comprar no boleto?* ${boleto}\n` +
+        (cpf ? `🆔 *CPF:* ${cpf}\n` : '') +
+        (produtoInteresse ? `📲 *Produto de Interesse:* ${produtoInteresse}\n` : '') +
+        `\nGostaria de ver as opções de parcelas e saber o que é preciso para aprovar meu pedido.`;
 
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`;
@@ -260,36 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
      7. Interação dos Cards de Produtos: Seleção e Scroll Suave
      -------------------------------------------------------------------------- */
   const selectModelAndScroll = (modelName) => {
-    if (!selectModelo) return;
-
-    let matched = false;
-    for (let i = 0; i < selectModelo.options.length; i++) {
-      const opt = selectModelo.options[i];
-      if (opt.value.toLowerCase().includes(modelName.toLowerCase()) || 
-          modelName.toLowerCase().includes(opt.value.toLowerCase())) {
-        selectModelo.selectedIndex = i;
-        matched = true;
-        break;
-      }
+    if (inputProdutoInteresse) {
+      inputProdutoInteresse.value = modelName;
     }
-
-    if (!matched) {
-      if (modelName.toLowerCase().includes('xiaomi') || modelName.toLowerCase().includes('redmi') || modelName.toLowerCase().includes('note')) {
-        selectModelo.value = 'Xiaomi Redmi Note 15';
-      } else if (modelName.toLowerCase().includes('poco')) {
-        selectModelo.value = 'Xiaomi Poco C81 Pro';
-      } else if (modelName.toLowerCase().includes('c85')) {
-        selectModelo.value = 'Realme C85';
-      } else if (modelName.toLowerCase().includes('power') || modelName.toLowerCase().includes('p4')) {
-        selectModelo.value = 'Realme P4 Power 5G';
-      } else if (modelName.toLowerCase().includes('realme') || modelName.toLowerCase().includes('android')) {
-        selectModelo.value = 'Outro Celular Android';
-      } else {
-        selectModelo.value = 'Outro Celular Android';
-      }
-    }
-
-    clearError(selectModelo.closest('.form-group'));
 
     const simuladorSection = document.getElementById('simulador');
     if (simuladorSection) {

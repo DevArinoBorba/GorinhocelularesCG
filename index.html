@@ -701,6 +701,7 @@
             </div>
 
             <form id="form-simulador" class="sim-form" novalidate>
+              <input type="hidden" id="lead-produto-interesse" name="produto_interesse" value="">
               <!-- Campo 1: Nome Completo -->
               <div class="form-group">
                 <label for="lead-nome" class="form-label">
@@ -749,51 +750,83 @@
                 <span class="error-msg" id="error-whatsapp">Digite um número de WhatsApp válido com DDD.</span>
               </div>
 
-              <!-- Campo 3: Modelo Desejado -->
+              <!-- Campo 3: Faixa de Valor -->
               <div class="form-group">
-                <label for="lead-modelo" class="form-label">
-                  <span>Qual marca ou modelo você tem interesse?</span>
+                <label for="lead-faixa-valor" class="form-label">
+                  <span>Qual faixa de valor você procura?</span>
                   <span class="label-req">*</span>
                 </label>
                 <div class="input-wrapper select-wrapper">
                   <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                   </svg>
-                  <select id="lead-modelo" name="modelo" class="form-input form-select" required>
-                    <option value="" disabled selected>Selecione seu modelo de interesse</option>
-                    <option value="Xiaomi Redmi Note 15">Xiaomi Redmi Note 15 (Câmera 108MP • 6000mAh)</option>
-                    <option value="Xiaomi Poco C81 Pro">Xiaomi Poco C81 Pro (Processador Turbo Ágil)</option>
-                    <option value="Realme C85">Realme C85 Ultra (Bateria 7000mAh • IP69 Pro)</option>
-                    <option value="Realme P4 Power 5G">Realme P4 Power 5G (Bateria Titan 10.001mAh • 5G)</option>
-                    <option value="Outro Celular Android">Outro modelo de Celular Android</option>
-                    <option value="Quero Ajuda para Escolher">Quero ajuda para escolher o melhor para mim</option>
+                  <select id="lead-faixa-valor" name="faixa_valor" class="form-input form-select" required>
+                    <option value="" disabled selected>Selecione a faixa de valor</option>
+                    <option value="Até R$ 1.000">Até R$ 1.000</option>
+                    <option value="R$ 1.000 a R$ 1.500">R$ 1.000 a R$ 1.500</option>
+                    <option value="R$ 1.500 a R$ 2.500">R$ 1.500 a R$ 2.500</option>
+                    <option value="R$ 2.500 a R$ 4.000">R$ 2.500 a R$ 4.000</option>
+                    <option value="Acima de R$ 4.000">Acima de R$ 4.000</option>
                   </select>
                   <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <span class="error-msg" id="error-modelo">Por favor, selecione uma opção.</span>
+                <span class="error-msg" id="error-faixa-valor">Por favor, selecione uma faixa de valor.</span>
               </div>
 
-              <!-- Campo 4: Situação Cadastral do CPF -->
+              <!-- Campo 4: Intenção de Compra no Boleto -->
               <div class="form-group">
-                <label for="lead-status-cpf" class="form-label">
-                  <span>Possui restrição no CPF ou score baixo?</span>
+                <label for="lead-boleto" class="form-label">
+                  <span>Você pretende comprar no boleto?</span>
                   <span class="label-req">*</span>
                 </label>
                 <div class="input-wrapper select-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                  </svg>
+                  <select id="lead-boleto" name="boleto" class="form-input form-select" required>
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Quero conhecer as formas de pagamento">Quero conhecer as formas de pagamento</option>
+                  </select>
+                  <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <span class="error-msg" id="error-boleto">Por favor, selecione uma opção.</span>
+              </div>
+
+              <!-- Campo 5: CPF (opcional) -->
+              <div class="form-group">
+                <label for="lead-cpf" class="form-label">
+                  <span>CPF (opcional)</span>
+                </label>
+                <div class="input-wrapper">
                   <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                   </svg>
-                  <select id="lead-status-cpf" name="status_cpf" class="form-input form-select" required>
-                    <option value="" disabled selected>Selecione a situação do seu CPF</option>
-                    <option value="Não, meu nome está limpo">Não, meu nome está 100% limpo</option>
-                    <option value="Sim, possuo restrição no nome">Sim, possuo restrição (SPC/Serasa)</option>
-                    <option value="Não tenho certeza / Score Baixo">Não tenho certeza / Acredito ter score baixo</option>
-                  </select>
-                  <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <input
+                    type="text"
+                    id="lead-cpf"
+                    name="cpf"
+                    class="form-input"
+                    placeholder="000.000.000-00"
+                    maxlength="14"
+                    inputmode="numeric"
+                    autocomplete="off"
+                  >
                 </div>
-                <span class="error-msg" id="error-cpf">Por favor, selecione a situação do seu CPF.</span>
+                <span class="error-msg" id="error-cpf">Digite um CPF válido ou deixe em branco.</span>
+              </div>
+
+              <!-- Campo 6: Consentimento de Contato -->
+              <div class="form-group form-group-checkbox">
+                <label class="checkbox-label" for="lead-consent">
+                  <input type="checkbox" id="lead-consent" name="consent" class="checkbox-input" required>
+                  <span class="checkbox-custom"></span>
+                  <span class="checkbox-text">Autorizo o contato da equipe Gordinho Celulares pelo WhatsApp para receber informações sobre produtos e condições de pagamento.</span>
+                </label>
+                <span class="error-msg" id="error-consent">É necessário autorizar o contato para continuar.</span>
               </div>
 
               <!-- Botão de Envio (CTA Principal de Alta Conversão) -->
