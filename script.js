@@ -363,16 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.querySelectorAll('.footer-link-item[data-fill]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const modelName = link.getAttribute('data-fill');
-      if (modelName) {
-        selectModelAndScroll(modelName);
-      }
-    });
-  });
-
   /* --------------------------------------------------------------------------
      8. Accordion Dinâmico do FAQ
      -------------------------------------------------------------------------- */
