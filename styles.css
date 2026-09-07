@@ -2090,30 +2090,39 @@ button, input, select {
 
 .footer-credit {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.78rem;
-  color: #64748b;
 }
 
-.footer-credit a {
+.footer-credit-link {
   display: inline-flex;
   align-items: center;
-  line-height: 0;
-  transition: opacity var(--transition-fast);
+  gap: 9px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  color: #94a3b8;
+  transition: all var(--transition-fast);
 }
 
-.footer-credit a:hover {
-  opacity: 0.75;
+.footer-credit-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.footer-credit-link strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .orium-logo {
-  height: 22px;
-  width: auto;
+  height: 18px;
+  width: 18px;
   filter: brightness(0) invert(1);
 }
 
