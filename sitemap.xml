@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- 1. Página Inicial Institucional: Loja & Assistência Técnica Especializada -->
   <url>
     <loc>https://www.gordinhocelularesoficial.com.br/</loc>
     <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
 
-    <!-- Imagem de Destaque / Identidade da Marca -->
     <image:image>
       <image:loc>https://www.gordinhocelularesoficial.com.br/Gordinho+influencer.webp</image:loc>
-      <image:title>Gordinho Celulares Campo Grande - Loja Física há mais de 15 anos</image:title>
+      <image:title>Gordinho Celulares Campo Grande - Loja e Assistência Técnica Especializada</image:title>
       <image:caption>Fachada e atendimento da loja física Gordinho Celulares na Avenida Noroeste em Campo Grande - MS</image:caption>
     </image:image>
 
-    <!-- Logo / Mascote -->
     <image:image>
       <image:loc>https://www.gordinhocelularesoficial.com.br/Logo_cropped.webp</image:loc>
       <image:title>Gordinho Celulares - Mascote Oficial e Logotipo</image:title>
       <image:caption>Logomarca oficial da Gordinho Celulares</image:caption>
     </image:image>
 
-    <!-- Celulares em Destaque -->
     <image:image>
       <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/RedmiNote15.webp</image:loc>
-      <image:title>Xiaomi Redmi Note 15 no Boleto Bancário em Campo Grande</image:title>
-      <image:caption>Xiaomi Redmi Note 15 com câmera de 108MP parcelado em até 18x no boleto</image:caption>
+      <image:title>Xiaomi Redmi Note 15 em Campo Grande</image:title>
+      <image:caption>Xiaomi Redmi Note 15 na Gordinho Celulares</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Landing Page Secundária: Celulares Androids no Boleto Bancário (Tráfego Pago) -->
+  <url>
+    <loc>https://www.gordinhocelularesoficial.com.br/celular-no-boleto.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/Gordinho+influencer.webp</image:loc>
+      <image:title>Comprar Celular no Boleto em Campo Grande - Gordinho Celulares</image:title>
+      <image:caption>Simulação e pré-cadastro presencial no boleto sem limite de cartão de crédito</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/RedmiNote15.webp</image:loc>
+      <image:title>Xiaomi Redmi Note 15 no Boleto Bancário</image:title>
+      <image:caption>Xiaomi Redmi Note 15 parcelado em até 18x no boleto</image:caption>
     </image:image>
 
     <image:image>
       <image:loc>https://www.gordinhocelularesoficial.com.br/modelos/PocoC81PRo.webp</image:loc>
-      <image:title>Xiaomi Poco C81 Pro no Boleto Bancário em Campo Grande</image:title>
-      <image:caption>Xiaomi Poco C81 Pro parcelado no boleto sem consulta tradicional ou limite de cartão</image:caption>
+      <image:title>Xiaomi Poco C81 Pro no Boleto Bancário</image:title>
+      <image:caption>Xiaomi Poco C81 Pro parcelado no boleto sem consulta tradicional</image:caption>
     </image:image>
 
     <image:image>
@@ -46,4 +65,5 @@
       <image:caption>Realme P4 Power 5G com bateria de 10.000mAh parcelado em até 18x no boleto</image:caption>
     </image:image>
   </url>
+
 </urlset>

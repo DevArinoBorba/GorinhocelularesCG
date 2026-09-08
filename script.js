@@ -426,4 +426,152 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealElements.forEach(el => el.classList.add('revealed'));
   }
+
+  /* --------------------------------------------------------------------------
+     10. Formulário e Ações de Assistência Técnica Especializada
+     -------------------------------------------------------------------------- */
+  const formAssistencia = document.getElementById('form-orcamento-assistencia');
+  const inputAssistenciaWhats = document.getElementById('assistencia-whatsapp');
+  const selectProblema = document.getElementById('assistencia-problema');
+  const inputModeloAparelho = document.getElementById('assistencia-modelo');
+  const inputNomeAssistencia = document.getElementById('assistencia-nome');
+  const textareaDetalhes = document.getElementById('assistencia-detalhes');
+
+  if (inputAssistenciaWhats) {
+    inputAssistenciaWhats.addEventListener('input', (e) => {
+      e.target.value = applyPhoneMask(e.target.value);
+      clearError(inputAssistenciaWhats.closest('.form-group'));
+    });
+  }
+
+  // Ação ao clicar nos botões dos cards de serviços
+  document.querySelectorAll('.btn-service-action').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const serviceName = btn.getAttribute('data-service') || 'Assistência Técnica';
+      
+      // Se houver o formulário de orçamento na página, pré-seleciona e rola
+      if (selectProblema) {
+        for (let i = 0; i < selectProblema.options.length; i++) {
+          if (selectProblema.options[i].text.toLowerCase().includes(serviceName.toLowerCase()) || 
+              selectProblema.options[i].value.toLowerCase().includes(serviceName.toLowerCase())) {
+            selectProblema.selectedIndex = i;
+            break;
+          }
+        }
+        const targetSection = document.getElementById('orcamento');
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          if (inputModeloAparelho) {
+            setTimeout(() => inputModeloAparelho.focus(), 600);
+          }
+          return;
+        }
+      }
+
+      // Caso contrário, abre direto no WhatsApp
+      const waMsg = encodeURIComponent(`Olá, equipe Gordinho Celulares! Gostaria de um orçamento para *${serviceName}* no meu celular.`);
+      window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${waMsg}`, '_blank');
+    });
+  });
+
+  // Envio do formulário de assistência técnica
+  if (formAssistencia) {
+    formAssistencia.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let isValid = true;
+      const nome = inputNomeAssistencia ? inputNomeAssistencia.value.trim() : '';
+      const whatsapp = inputAssistenciaWhats ? inputAssistenciaWhats.value.trim() : '';
+      const modelo = inputModeloAparelho ? inputModeloAparelho.value.trim() : '';
+      const problema = selectProblema ? selectProblema.value : '';
+      const detalhes = textareaDetalhes ? textareaDetalhes.value.trim() : '';
+
+      if (inputNomeAssistencia && nome.length < 3) {
+        showError(inputNomeAssistencia.closest('.form-group'), 'Por favor, informe seu nome completo.');
+        isValid = false;
+      }
+
+      const digits = whatsapp.replace(/\D/g, '');
+      if (inputAssistenciaWhats && (digits.length < 10 || digits.length > 11)) {
+        showError(inputAssistenciaWhats.closest('.form-group'), 'Digite um número de WhatsApp válido com DDD.');
+        isValid = false;
+      }
+
+      if (selectProblema && !problema) {
+        showError(selectProblema.closest('.form-group'), 'Selecione o tipo de conserto ou defeito.');
+        isValid = false;
+      }
+
+      if (inputModeloAparelho && modelo.length < 2) {
+        showError(inputModeloAparelho.closest('.form-group'), 'Informe a marca e modelo do celular (ex: iPhone 12, Redmi Note 11).');
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const btnSubmit = formAssistencia.querySelector('button[type="submit"]');
+      const originalBtnText = btnSubmit ? btnSubmit.innerHTML : '';
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span>Abrindo WhatsApp dos Técnicos...</span>';
+      }
+
+      let msg = `🔧 *SOLICITAÇÃO DE ORÇAMENTO - ASSISTÊNCIA TÉCNICA*\n`;
+      msg += `📍 *Gordinho Celulares Campo Grande*\n\n`;
+      msg += `👤 *Cliente:* ${nome}\n`;
+      msg += `📱 *WhatsApp:* ${whatsapp}\n`;
+      msg += `📲 *Aparelho:* ${modelo}\n`;
+      msg += `⚠️ *Serviço/Defeito:* ${problema}\n`;
+      if (detalhes) {
+        msg += `📝 *Detalhes adicionais:* ${detalhes}\n`;
+      }
+      msg += `\nOlá, gostaria de saber o valor aproximado e o tempo de reparo para esse aparelho!`;
+
+      const waUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+        if (btnSubmit) {
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = originalBtnText;
+        }
+      }, 500);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     11. Menu Mobile Hambúrguer & Drawer Interativo
+     -------------------------------------------------------------------------- */
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+  if (mobileMenuToggle && mobileNavDrawer) {
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer.classList.contains('open');
+      if (isOpen) {
+        mobileNavDrawer.classList.remove('open');
+        mobileMenuToggle.classList.remove('open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      } else {
+        mobileNavDrawer.classList.add('open');
+        mobileMenuToggle.classList.add('open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        mobileNavDrawer.setAttribute('aria-hidden', 'false');
+      }
+    });
+
+    // Fecha o menu ao clicar em qualquer link interno
+    mobileNavDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNavDrawer.classList.remove('open');
+        mobileMenuToggle.classList.remove('open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      });
+    });
+  }
 });
+
+
