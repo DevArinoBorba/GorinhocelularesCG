@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Constantes da Loja
   const STORE_WHATSAPP_NUMBER = '5567992451418'; // (67) 99245-1418
   const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyXFuEbKpKCLGWKCsW2Gg369w7UwKl3PQDomJIwjtYDnv2YeKiVp9p-rJ65vS676i7x/exec';
+  const GOOGLE_SHEETS_ORCAMENTO_URL = 'https://script.google.com/macros/s/AKfycbwuJ89TtTH-opb2scXk3Lmcf18TxpcIWLRfIU53yZSD6aiyNUx2jSt4l293euLI4ZZUrQ/exec';
 
   // Elementos do DOM
   const navbar = document.getElementById('navbar');
@@ -514,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnText = btnSubmit ? btnSubmit.innerHTML : '';
       if (btnSubmit) {
         btnSubmit.disabled = true;
-        btnSubmit.innerHTML = '<span>Abrindo WhatsApp dos Técnicos...</span>';
+        btnSubmit.innerHTML = '<span>Salvando orçamento e abrindo WhatsApp...</span>';
       }
 
       let msg = `🔧 *SOLICITAÇÃO DE ORÇAMENTO - ASSISTÊNCIA TÉCNICA*\n`;
@@ -530,13 +531,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const waUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
-      setTimeout(() => {
-        window.open(waUrl, '_blank');
-        if (btnSubmit) {
-          btnSubmit.disabled = false;
-          btnSubmit.innerHTML = originalBtnText;
-        }
-      }, 500);
+      let redirected = false;
+      const redirectToWhatsapp = () => {
+        if (redirected) return;
+        redirected = true;
+        window.location.href = waUrl;
+      };
+
+      const formData = new URLSearchParams({
+        nome,
+        whatsapp,
+        modelo,
+        problema,
+        detalhes,
+      });
+
+      // Envia os dados para a planilha de orçamentos no Google Sheets
+      fetch(`${GOOGLE_SHEETS_ORCAMENTO_URL}?${formData.toString()}`, {
+        method: 'POST',
+        mode: 'no-cors',
+      })
+        .catch((err) => console.warn('Erro ao salvar no Google Sheets:', err))
+        .finally(redirectToWhatsapp);
+
+      setTimeout(redirectToWhatsapp, 2000);
     });
   }
 
