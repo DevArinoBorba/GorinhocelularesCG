@@ -834,9 +834,9 @@ button, input, select {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
-.badge-1 { top: 10%; left: -20px; }
+.badge-1 { top: 4%; right: 10px; left: auto; }
 .badge-2 { bottom: 6%; left: -10px; }
-.badge-3 { top: 20%; right: -25px; }
+.badge-3 { top: 25%; right: -25px; }
 
 .badge-icon {
   width: 36px;
@@ -2384,7 +2384,7 @@ button, input, select {
     justify-content: center;
   }
 
-  .badge-1 { left: 0; }
+  .badge-1 { right: 10px; left: auto; }
   .badge-3 { right: 0; }
 
   .authority-grid {
@@ -2534,6 +2534,19 @@ button, input, select {
 
   .floating-badge {
     padding: 8px 12px;
+  }
+  .badge-1 {
+    top: 2%;
+    right: 4px;
+    left: auto;
+  }
+  .badge-3 {
+    top: 21%;
+    right: 0;
+  }
+  .badge-2 {
+    bottom: 4%;
+    left: 0;
   }
   .fb-title {
     font-size: 0.75rem;
