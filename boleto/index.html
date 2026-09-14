@@ -2,6 +2,11 @@
 <html lang="pt-BR" class="scroll-smooth" data-theme="dark">
 
 <head>
+  <script>
+    if (window.location.pathname.endsWith('/boleto')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
