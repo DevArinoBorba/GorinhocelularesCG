@@ -28,12 +28,12 @@
     </image:image>
   </url>
 
-  <!-- 2. Landing Page Secundária: Celulares Androids no Boleto Bancário (Tráfego Pago) -->
+  <!-- 2. Landing Page de Tráfego Pago: Celulares no Boleto Bancário -->
   <url>
-    <loc>https://www.gordinhocelularesoficial.com.br/celular-no-boleto.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://www.gordinhocelularesoficial.com.br/boleto/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
 
     <image:image>
       <image:loc>https://www.gordinhocelularesoficial.com.br/Gordinho+influencer.webp</image:loc>
@@ -64,6 +64,14 @@
       <image:title>Realme P4 Power 5G no Boleto Bancário</image:title>
       <image:caption>Realme P4 Power 5G com bateria de 10.000mAh parcelado em até 18x no boleto</image:caption>
     </image:image>
+  </url>
+
+  <!-- 3. URL Legada: Celulares no Boleto Bancário -->
+  <url>
+    <loc>https://www.gordinhocelularesoficial.com.br/celular-no-boleto.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
