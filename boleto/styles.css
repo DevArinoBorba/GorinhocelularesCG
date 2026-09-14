@@ -692,8 +692,8 @@ button, input, select, textarea {
 }
 
 .badge-pos-top {
-  top: 15px;
-  left: -20px;
+  top: -30px;
+  left: -25px;
   animation: floatAnim 4.2s ease-in-out infinite;
 }
 
@@ -1673,6 +1673,11 @@ input[type="checkbox"]:checked + .custom-checkbox {
   .hero-visual-card {
     order: -1;
     min-height: 400px;
+  }
+
+  .badge-pos-top {
+    top: -20px;
+    left: 0;
   }
 
 
