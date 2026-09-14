@@ -111,102 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
   handleScroll();
 
   /* --------------------------------------------------------------------------
-     4. SIMULADOR INTERATIVO DE PARCELAS NO BOLETO
+     4. Seleção de Modelos da Vitrine & Foco no Pré-Cadastro
      -------------------------------------------------------------------------- */
-  const rangeInput = document.getElementById('sim-range');
-  const rangeValDisplay = document.getElementById('sim-range-val');
-  const presetButtons = document.querySelectorAll('.preset-btn');
-  const installmentButtons = document.querySelectorAll('.inst-btn');
-  const resultModelEl = document.getElementById('sim-result-model');
-  const resultParcelaCountEl = document.getElementById('sim-parcela-count');
-  const resultParcelaValEl = document.getElementById('sim-parcela-val');
-  const btnApplySimulation = document.getElementById('btn-apply-sim');
-
-  let currentPrice = 1499;
-  let currentModel = 'Xiaomi Redmi Note 15';
-  let currentInstallments = 18;
-
-  // Tabela de fatores estimados de financiamento no boleto
-  const financingFactors = {
-    6: 0.185,
-    10: 0.122,
-    12: 0.105,
-    18: 0.076
-  };
-
-  const updateSimulationDisplay = () => {
-    // Atualiza número no slider
-    if (rangeValDisplay) {
-      rangeValDisplay.textContent = `R$ ${currentPrice.toLocaleString('pt-BR')}`;
-    }
-
-    // Calcula parcela
-    const factor = financingFactors[currentInstallments] || (1 / currentInstallments * 1.3);
-    const installmentValue = Math.round(currentPrice * factor);
-
-    if (resultModelEl) resultModelEl.textContent = currentModel;
-    if (resultParcelaCountEl) resultParcelaCountEl.textContent = `${currentInstallments}x de aproximadamente`;
-    if (resultParcelaValEl) resultParcelaValEl.textContent = `R$ ${installmentValue.toLocaleString('pt-BR')}`;
-
-    // Dispara evento para GTM (debounce)
-    if (window.dataLayer) {
-      window.dataLayer.push({
-        event: 'simulador_interacao',
-        modelo: currentModel,
-        valor: currentPrice,
-        parcelas: currentInstallments,
-        valor_parcela: installmentValue
-      });
-    }
-  };
-
-  // Slider change
-  if (rangeInput) {
-    rangeInput.addEventListener('input', (e) => {
-      currentPrice = parseInt(e.target.value, 10);
-      currentModel = `Aparelho na faixa de R$ ${currentPrice.toLocaleString('pt-BR')}`;
-      presetButtons.forEach(btn => btn.classList.remove('active'));
-      updateSimulationDisplay();
-    });
-  }
-
-  // Presets
-  presetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      presetButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      currentPrice = parseInt(btn.getAttribute('data-price'), 10);
-      currentModel = btn.getAttribute('data-model');
-
-      if (rangeInput) rangeInput.value = currentPrice;
-      updateSimulationDisplay();
-    });
-  });
-
-  // Botões de parcelas (6x, 10x, 12x, 18x)
-  installmentButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      installmentButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      currentInstallments = parseInt(btn.getAttribute('data-inst'), 10);
-      updateSimulationDisplay();
-    });
-  });
-
-  // Inicializa o simulador
-  updateSimulationDisplay();
-
-  // Ação do Botão "Quero Este Parcelamento"
   const formSection = document.getElementById('pre-cadastro');
   const inputProdutoInteresse = document.getElementById('lead-produto-interesse');
   const selectFaixaValor = document.getElementById('lead-faixa-valor');
   const inputNome = document.getElementById('lead-nome');
 
+  let currentModel = 'Xiaomi Redmi Note 15';
+  let currentPrice = 1499;
+
   const populateFormAndScroll = (modelName, priceVal) => {
+    currentModel = modelName;
+    currentPrice = priceVal;
+
     if (inputProdutoInteresse) {
-      inputProdutoInteresse.value = `${modelName} (Simulado: ${currentInstallments}x no boleto)`;
+      inputProdutoInteresse.value = `${modelName} (em até 18x no boleto)`;
     }
 
     if (selectFaixaValor) {
@@ -236,13 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  if (btnApplySimulation) {
-    btnApplySimulation.addEventListener('click', (e) => {
-      e.preventDefault();
-      populateFormAndScroll(currentModel, currentPrice);
-    });
-  }
-
   // Cards da Vitrine
   document.querySelectorAll('.btn-select-model').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -250,16 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const modelName = btn.getAttribute('data-model');
       const modelPrice = parseInt(btn.getAttribute('data-price') || '1499', 10);
 
-      currentModel = modelName;
-      currentPrice = modelPrice;
-
-      // Sincroniza o simulador
-      if (rangeInput) rangeInput.value = modelPrice;
-      presetButtons.forEach(b => {
-        if (b.getAttribute('data-model') === modelName) b.classList.add('active');
-        else b.classList.remove('active');
-      });
-      updateSimulationDisplay();
+      // Dispara evento para GTM
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'selecionar_modelo_vitrine',
+          modelo: modelName,
+          valor: modelPrice
+        });
+      }
 
       populateFormAndScroll(modelName, modelPrice);
     });

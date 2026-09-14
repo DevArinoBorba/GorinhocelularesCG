@@ -203,7 +203,7 @@
 </head>
 
 <body>
-  <a href="#simulador" class="skip-link">Pular para o simulador de parcelas</a>
+  <a href="#pre-cadastro" class="skip-link">Pular para o pré-cadastro</a>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VFSNDQG" height="0" width="0"
@@ -260,8 +260,8 @@
           </svg>
         </button>
 
-        <a href="#simulador" class="btn btn-cta" style="padding: 0.65rem 1.25rem; font-size: 0.88rem;">
-          Simular Parcelas
+        <a href="#pre-cadastro" class="btn btn-cta" style="padding: 0.65rem 1.25rem; font-size: 0.88rem;">
+          Consultar no Boleto
         </a>
       </div>
     </div>
@@ -284,13 +284,13 @@
           </h1>
 
           <p class="hero-subtitle">
-            Sem cartão de crédito ou está com o nome com restrição? Na <strong class="hero-highlight-brand">Gordinho Celulares</strong> você escolhe seu smartphone novo, simula suas parcelas online e faz sua análise presencial sem complicação na nossa loja no Centro de Campo Grande.
+            Sem cartão de crédito ou está com o nome com restrição? Na <strong class="hero-highlight-brand">Gordinho Celulares</strong> você escolhe seu smartphone novo e faz sua análise presencial sem complicação na nossa loja no Centro de Campo Grande.
           </p>
 
           <div class="hero-actions">
             <div class="hero-btn-row">
-              <a href="#simulador" class="btn btn-cta btn-pulse" id="hero-btn-simular">
-                <span>SIMULAR MEU PARCELAMENTO</span>
+              <a href="#pre-cadastro" class="btn btn-cta btn-pulse" id="hero-btn-simular">
+                <span>CONSULTAR PARCELAMENTO</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
@@ -392,95 +392,13 @@
       </div>
     </section>
 
-    <!-- 4. SIMULADOR INTERATIVO DE PARCELAS NO BOLETO -->
-    <section class="simulator-section" id="simulador">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pill">CALCULADORA DE PARCELAS</span>
-          <h2 class="section-title">Simule seu Celular no <span class="gradient-text-emerald">Boleto Bancário</span></h2>
-          <p class="section-desc">Escolha um modelo ou arraste o valor desejado para ver uma estimativa de parcelamento em até 18x.</p>
-        </div>
-
-        <div class="simulator-box glass-card">
-          <div class="simulator-grid">
-            <div class="simulator-controls">
-              <!-- Presets de Modelos -->
-              <div>
-                <label class="sim-group-label">1. Escolha o Aparelho de Interesse:</label>
-                <div class="model-preset-grid">
-                  <button type="button" class="preset-btn active" data-model="Xiaomi Redmi Note 15" data-price="1499">
-                    <span class="preset-name">Redmi Note 15</span>
-                    <span class="preset-price-tag">Aprox. R$ 1.499</span>
-                  </button>
-                  <button type="button" class="preset-btn" data-model="Xiaomi Poco C81 Pro" data-price="1099">
-                    <span class="preset-name">Poco C81 Pro</span>
-                    <span class="preset-price-tag">Aprox. R$ 1.099</span>
-                  </button>
-                  <button type="button" class="preset-btn" data-model="Realme C85 Ultra" data-price="1399">
-                    <span class="preset-name">Realme C85 Ultra</span>
-                    <span class="preset-price-tag">Aprox. R$ 1.399</span>
-                  </button>
-                  <button type="button" class="preset-btn" data-model="Realme P4 Power 5G" data-price="1899">
-                    <span class="preset-name">Realme P4 Power 5G</span>
-                    <span class="preset-price-tag">Aprox. R$ 1.899</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Slider de Valor Customizado -->
-              <div class="slider-container">
-                <div class="slider-value-display">
-                  <label class="sim-group-label" for="sim-range">Ou escolha a Faixa de Preço:</label>
-                  <span class="slider-val-number" id="sim-range-val">R$ 1.499</span>
-                </div>
-                <input type="range" id="sim-range" class="custom-range" min="800" max="4500" step="50" value="1499" aria-label="Faixa de valor do aparelho">
-              </div>
-
-              <!-- Seleção de Parcelas -->
-              <div>
-                <label class="sim-group-label">2. Quantidade de Parcelas no Boleto:</label>
-                <div class="installments-selector">
-                  <button type="button" class="inst-btn" data-inst="6">6x</button>
-                  <button type="button" class="inst-btn" data-inst="10">10x</button>
-                  <button type="button" class="inst-btn" data-inst="12">12x</button>
-                  <button type="button" class="inst-btn active" data-inst="18">18x</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Resultado do Parcelamento -->
-            <div class="simulator-result-card">
-              <span class="result-badge-top">⚡ SIMULAÇÃO PRELIMINAR</span>
-              <h3 class="result-model-name" id="sim-result-model">Xiaomi Redmi Note 15</h3>
-              
-              <div class="result-parcela-wrapper">
-                <span class="result-parcela-count" id="sim-parcela-count">18x de aproximadamente</span>
-                <span class="result-parcela-val" id="sim-parcela-val">R$ 114</span>
-              </div>
-
-              <p class="result-disclaimer">
-                * Simulação ilustrativa. As taxas, valor de entrada e parcelas exatas são calculadas presencialmente pela financeira parceira conforme o CPF.
-              </p>
-
-              <button type="button" class="btn btn-cta btn-sim-action" id="btn-apply-sim">
-                <span>QUERO ESTE PARCELAMENTO</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Vitrine dos Aparelhos em Destaque -->
+    <!-- 4. Vitrine dos Aparelhos em Destaque -->
     <section class="showcase-section" id="modelos">
       <div class="container">
         <div class="section-header">
           <span class="section-pill">ESTOQUE A PRONTA-ENTREGA</span>
           <h2 class="section-title">Os Campeões de Venda <span class="gradient-text-emerald">no Boleto</span></h2>
-          <p class="section-desc">Todos lacrados na caixa com garantia total de 1 ano. Escolha o seu e simule agora mesmo!</p>
+          <p class="section-desc">Todos lacrados na caixa com garantia total de 1 ano. Escolha o seu e garanta sua análise sem compromisso!</p>
         </div>
 
         <div class="products-grid">
@@ -515,7 +433,7 @@
                 <span class="price-main">Até 18x Sem Cartão</span>
               </div>
               <button type="button" class="btn btn-cta btn-product-action btn-select-model" data-model="Xiaomi Redmi Note 15" data-price="1499">
-                Simular Este no Boleto
+                Quero Este no Boleto
               </button>
             </div>
           </article>
@@ -551,7 +469,7 @@
                 <span class="price-main">Até 18x Sem Cartão</span>
               </div>
               <button type="button" class="btn btn-cta btn-product-action btn-select-model" data-model="Xiaomi Poco C81 Pro" data-price="1099">
-                Simular Este no Boleto
+                Quero Este no Boleto
               </button>
             </div>
           </article>
@@ -587,7 +505,7 @@
                 <span class="price-main">Até 18x Sem Cartão</span>
               </div>
               <button type="button" class="btn btn-cta btn-product-action btn-select-model" data-model="Realme C85 Ultra" data-price="1399">
-                Simular Este no Boleto
+                Quero Este no Boleto
               </button>
             </div>
           </article>
@@ -623,7 +541,7 @@
                 <span class="price-main">Até 18x Sem Cartão</span>
               </div>
               <button type="button" class="btn btn-cta btn-product-action btn-select-model" data-model="Realme P4 Power 5G" data-price="1899">
-                Simular Este no Boleto
+                Quero Este no Boleto
               </button>
             </div>
           </article>
@@ -1042,8 +960,8 @@
         <span class="sticky-text-main">Celular em até 18x no Boleto</span>
         <span class="sticky-text-sub">Sem cartão • Análise presencial</span>
       </div>
-      <a href="#simulador" class="btn btn-cta mobile-sticky-btn">
-        Simular Agora
+      <a href="#pre-cadastro" class="btn btn-cta mobile-sticky-btn">
+        Consultar Agora
       </a>
     </div>
   </div>
